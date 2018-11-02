@@ -2,6 +2,11 @@ import os
 
 
 def get_dataset(path):
+    """
+    Gets the features and labels of the dataset
+    :param string path: The path the the dataset file after /datasets/
+    :return: features, labels
+    """
     with open(os.path.abspath(os.path.join(os.getcwd(), "../datasets/", path)), "r") as file:
         data = [line.split(',') for line in file.read().split('\n')][:-1]
     data = [[int(element) for element in row] for row in data]
