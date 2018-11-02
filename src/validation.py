@@ -16,6 +16,22 @@ def load_classifier(filename):
     return classifier
 
 
+def DT_classify(features, labels):
+    """
+    Classify using the trained DT classifier
+    :param features: List of features from validation set
+    :param labels: List of labels from validation set
+    :return:
+    """
+    DT_Classifier = load_classifier("DT_Classifier.pkl")
+
+    ds1_validation_predicted = DT_Classifier.predict(features)
+
+    accuracy = accuracy_score(labels, ds1_validation_predicted)
+
+    print("Decision Tree accuracy: ", LogColors.OKBLUE, accuracy, LogColors.ENDC)
+
+
 def MNB_classify(features, labels):
     """
     Classify using the trained MNB classifier
