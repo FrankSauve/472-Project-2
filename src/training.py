@@ -1,14 +1,18 @@
 import os
+import pickle
 from sklearn.naive_bayes import MultinomialNB
+from processing import get_dataset
 
 
-def get_training_dataset(path):
-    with open(os.path.abspath(os.path.join(os.getcwd(), "../datasets/", path)), "r") as file:
-        data = [line.split(',') for line in file.read().split('\n')][:-1]
-    data = [[int(element) for element in row] for row in data]
-    features = [d[:-1] for d in data]
-    labels = [d[-1] for d in data]
-    return features, labels
+def save_classifier(classifier, filename):
+    with open(os.path.abspath(os.path.join(os.getcwd(), "../pickles/", filename)), "wb") as pickle_file:
+        pickle.dump(classifier, pickle_file)
 
-# MNB_Classifier = MultinomialNB()
-# MNB_Classifier.fit()
+
+ds1_training_features, ds1_training_labels = get_dataset("ds1/ds1Train.csv")
+
+
+def MNB_train():
+    MNB_Classifier = MultinomialNB()
+    MNB_Classifier.fit(ds1_training_features, ds1_training_labels)
+    save_classifier(MNB_Classifier, "MNB_Classifier.pkl")
