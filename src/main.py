@@ -4,8 +4,7 @@ from LogColors import LogColors
 from processing import get_dataset
 
 while True:
-    # TODO: Ask which dataset to use.
-
+    # Choose which dataset
     option1 = 1
     while option1 >= 0 and option1 <= 2:
         option1 = input(LogColors.HEADER + "Which dataset do you wish to use?\n" + LogColors.ENDC +
@@ -16,6 +15,7 @@ while True:
     if option1 == "0":
         exit(0)
 
+    # Choose which ML alg to use
     option2 =1
     while option2 >=0 and option2 <=6:
         option2 = input(LogColors.HEADER + "Which action do you want to execute?\n" + LogColors.ENDC +
