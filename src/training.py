@@ -1,7 +1,7 @@
 import os
 import pickle
 from sklearn import tree
-from sklearn.naive_bayes import MultinomialNB
+from sklearn.naive_bayes import MultinomialNB, BernoulliNB, GaussianNB, ComplementNB
 
 
 def save_classifier(classifier, filename):
@@ -36,3 +36,36 @@ def MNB_train(features, labels):
     MNB_Classifier = MultinomialNB()
     MNB_Classifier.fit(features, labels)
     save_classifier(MNB_Classifier, "MNB_Classifier.pkl")
+
+def BNB_train(features, labels):
+    """
+    Use the Bernoulli Naive Bayes classifier to train
+    and saves the classifier as pickle file
+    :param features: List of features from training set
+    :param labels: List of labels from training set
+    """
+    BNB_Classifier = BernoulliNB()
+    BNB_Classifier.fit(features, labels)
+    save_classifier(BNB_Classifier, "BNB_Classifier.pkl")
+
+def GNB_train(features, labels):
+    """
+    Use the Gaussian Naive Bayes classifier to train
+    and saves the classifier as pickle file
+    :param features: List of features from training set
+    :param labels: List of labels from training set
+    """
+    GNB_Classifier = GaussianNB()
+    GNB_Classifier.fit(features, labels)
+    save_classifier(GNB_Classifier, "GNB_Classifier.pkl")
+
+def CNB_train(features, labels):
+    """
+    Use the Complement Naive Bayes classifier to train
+    and saves the classifier as pickle file
+    :param features: List of features from training set
+    :param labels: List of labels from training set
+    """
+    CNB_Classifier = ComplementNB()
+    CNB_Classifier.fit(features, labels)
+    save_classifier(CNB_Classifier, "CNB_Classifier.pkl")

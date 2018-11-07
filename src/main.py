@@ -25,23 +25,38 @@ while True:
                                           "4. Validate MNB\n"
                                           + LogColors.FAIL + "0. Exit\n" + LogColors.ENDC)
 
+    if option2 == "0":
+        exit(0)
+
+    ds_training_features = None
+    ds_training_labels = None
+    ds_validation_features = None
+    ds_validation_labels = None
+
+    if option2 % 2 == 1:
+        ds_training_features, ds_training_labels = get_dataset("ds" + option1 + "/ds" + option1 + "Train.csv")
+    else
+        ds_training_features, ds_training_labels = get_dataset("ds" + option1 + "/ds" + option1 + "Val.csv")
+
     if option2 == "1":
-        # Get the training features and labels of the dataset
-        ds_training_features, ds_training_labels = get_dataset("ds"+option1+"/ds"+option1+"Train.csv")
         training.DT_train(ds_training_features, ds_training_labels)
+    elif option2 == "3":
+        training.MNB_train(ds_training_features, ds_training_labels)
+    elif option2 == "5":
+        training.BNB_train(ds_training_features, ds_training_labels)
+    elif option2 == "7":
+        training.GNB_train(ds_training_features, ds_training_labels)
+    elif option2 == "9":
+        training.CNB_train(ds_training_features, ds_training_labels)
 
     elif option2 == "2":
-        ds_validation_features, ds_validation_labels = get_dataset("ds"+option1+"/ds"+option1+"Val.csv")
-        validation.DT_classify(ds_validation_features, ds_validation_labels)
-
-    elif option2 == "3":
-        # Get the training features and labels of the dataset
-        ds_training_features, ds_training_labels = get_dataset("ds"+option1+"/ds"+option1+"Train.csv")
-        training.MNB_train(ds_training_features, ds_training_labels)
-
+        validation.classify(ds_validation_features, ds_validation_labels, "DT")
     elif option2 == "4":
-        ds_validation_features, ds_validation_labels = get_dataset("ds"+option1+"/ds"+option1+"Val.csv")
-        validation.MNB_classify(ds_validation_features, ds_validation_labels)
-    elif option2 == "0":
-        exit(0)
+        validation.classify(ds_validation_features, ds_validation_labels, "MNB")
+    elif option2 == "6":
+        validation.classify(ds_validation_features, ds_validation_labels, "BNB")
+    elif option2 == "8":
+        validation.classify(ds_validation_features, ds_validation_labels, "GNB")
+    elif option2 == "10":
+        validation.classify(ds_validation_features, ds_validation_labels, "CNB")
 
