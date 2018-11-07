@@ -15,6 +15,8 @@ while True:
     if option1 == "0":
         exit(0)
 
+# TODO: ADD MORE NUMBERS TO OPTION2
+
     # Choose which ML alg to use
     option2 =1
     while option2 >=0 and option2 <=6:
