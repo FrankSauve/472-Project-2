@@ -5,8 +5,8 @@ from processing import get_dataset
 
 while True:
     # Choose which dataset
-    option1 = 1
-    while option1 >= 0 and option1 <= 2:
+    option1 = ""
+    while (int(option1) >= 0) and (int(option1) <= 2):
         option1 = input(LogColors.HEADER + "Which dataset do you wish to use?\n" + LogColors.ENDC +
         "1. Dataset 1\n"
         "2. Dataset 2\n"
@@ -15,17 +15,24 @@ while True:
     if option1 == "0":
         exit(0)
 
-# TODO: ADD MORE NUMBERS TO OPTION2
-
     # Choose which ML alg to use
-    option2 =1
-    while option2 >=0 and option2 <=6:
+    option2 = ""
+    validOption = False
+    while not validOption:
         option2 = input(LogColors.HEADER + "Which action do you want to execute?\n" + LogColors.ENDC +
                                           "1. Train DT\n"
                                           "2. Validate DT\n"
                                           "3. Train MNB\n"
                                           "4. Validate MNB\n"
+                                          "5. Train BNB\n"
+                                          "6. Validate BNB\n"
+                                          "7. Train GNB\n"
+                                          "8. Validate GNB\n"
+                                          "9. Train CNB\n"
+                                          "10. Validate CNB\n"
                                           + LogColors.FAIL + "0. Exit\n" + LogColors.ENDC)
+        if (int(option2) >=0) and (int(option2) <= 10):
+            validOption = True
 
     if option2 == "0":
         exit(0)
@@ -37,7 +44,7 @@ while True:
 
     if option2 % 2 == 1:
         ds_training_features, ds_training_labels = get_dataset("ds" + option1 + "/ds" + option1 + "Train.csv")
-    else
+    else:
         ds_training_features, ds_training_labels = get_dataset("ds" + option1 + "/ds" + option1 + "Val.csv")
 
     if option2 == "1":
