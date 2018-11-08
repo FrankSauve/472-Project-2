@@ -27,14 +27,18 @@ def classify(features, labels, ds, type):
 
     accuracy = accuracy_score(labels, ds_validation_predicted)
 
-    output = open(os.path.dirname(__file__) + "/../output/ds" + ds + "Test-" + type + ".txt", "w+")
+    try:
+        output = open(os.path.dirname(__file__) + "/../output/ds" + ds + "Test-" + type + ".txt", "w+")
 
-    i = 0
-    output_text = ""
-    while i < len(ds_validation_predicted):
-        output_text += str(i + 1) + ", " + str(ds_validation_predicted[i]) + "\n"
-        i += 1
+        i = 0
+        output_text = ""
+        while i < len(ds_validation_predicted):
+            output_text += str(i + 1) + ", " + str(ds_validation_predicted[i]) + "\n"
+            i += 1
 
-    output.write(output_text)
+        output.write(output_text)
+    except Exception:
+        print(LogColors.FAIL + "🛑 File IO exception" + LogColors.ENDC)
+        exit(0)
 
     print(type+" accuracy: ", LogColors.OKBLUE, accuracy, LogColors.ENDC)
