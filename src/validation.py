@@ -4,7 +4,6 @@ from LogColors import LogColors
 from sklearn.metrics import accuracy_score
 from processing import get_dataset
 
-
 def load_classifier(filename):
     """
     Load a pickle file
@@ -15,7 +14,7 @@ def load_classifier(filename):
         classifier = pickle.load(pickle_file)
     return classifier
 
-def classify(features, labels, type):
+def classify(features, labels, ds, type):
     """
     Classify using the trained classifier
     :param features: List of features from validation set
@@ -27,5 +26,15 @@ def classify(features, labels, type):
     ds_validation_predicted = classifier.predict(features)
 
     accuracy = accuracy_score(labels, ds_validation_predicted)
+
+    output = open(os.path.dirname(__file__) + "/../output/ds" + ds + "Test-" + type + ".txt", "w+")
+
+    i = 0
+    output_text = ""
+    while i < len(ds_validation_predicted):
+        output_text += str(i + 1) + ", " + str(ds_validation_predicted[i]) + "\n"
+        i += 1
+
+    output.write(output_text)
 
     print(type+" accuracy: ", LogColors.OKBLUE, accuracy, LogColors.ENDC)

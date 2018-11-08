@@ -64,15 +64,15 @@ while True:
         print(LogColors.OKGREEN + "Validating..." + LogColors.ENDC)
 
         if option2 == "2":
-            validation.classify(ds_validation_features, ds_validation_labels, "DT")
+            validation.classify(ds_validation_features, ds_validation_labels, option1, "DT")
         elif option2 == "4":
-            validation.classify(ds_validation_features, ds_validation_labels, "MNB")
+            validation.classify(ds_validation_features, ds_validation_labels, option1, "MNB")
         elif option2 == "6":
-            validation.classify(ds_validation_features, ds_validation_labels, "BNB")
+            validation.classify(ds_validation_features, ds_validation_labels, option1, "BNB")
         elif option2 == "8":
-            validation.classify(ds_validation_features, ds_validation_labels, "GNB")
+            validation.classify(ds_validation_features, ds_validation_labels, option1, "GNB")
         elif option2 == "10":
-            validation.classify(ds_validation_features, ds_validation_labels, "CNB")
+            validation.classify(ds_validation_features, ds_validation_labels, option1, "CNB")
 
         print(LogColors.OKGREEN + "Validated Successfully ✔" + LogColors.ENDC)
 
