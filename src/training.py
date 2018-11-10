@@ -21,7 +21,7 @@ def DT_train(features, labels):
     :param features: List of features from training set
     :param labels: List of labels from training set
     """
-    DT_Classifier = tree.DecisionTreeClassifier()
+    DT_Classifier = tree.DecisionTreeClassifier(splitter='random')
     DT_Classifier.fit(features, labels)
     save_classifier(DT_Classifier, "DT_Classifier.pkl")
 
