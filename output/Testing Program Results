@@ -1,0 +1,112 @@
+Running Testing Program...
+
+Dataset 1
+
+DT Validation values and Average
+DT accuracy:   0.2782101167315175
+DT accuracy:   0.2840466926070039
+DT accuracy:   0.28793774319066145
+DT accuracy:   0.29571984435797666
+DT accuracy:   0.27626459143968873
+Total Average: 0.28443579766536964
+
+
+MNB Validation values and Average
+MNB accuracy:   0.4980544747081712
+MNB accuracy:   0.4980544747081712
+MNB accuracy:   0.4980544747081712
+MNB accuracy:   0.4980544747081712
+MNB accuracy:   0.4980544747081712
+Total Average: 0.4980544747081712
+
+
+BNB Validation values and Average
+BNB accuracy:   0.5992217898832685
+BNB accuracy:   0.5992217898832685
+BNB accuracy:   0.5992217898832685
+BNB accuracy:   0.5992217898832685
+BNB accuracy:   0.5992217898832685
+Total Average: 0.5992217898832685
+
+
+GNB Validation values and Average
+GNB accuracy:   0.4377431906614786
+GNB accuracy:   0.4377431906614786
+GNB accuracy:   0.4377431906614786
+GNB accuracy:   0.4377431906614786
+GNB accuracy:   0.4377431906614786
+Total Average: 0.43774319066147865
+
+
+CNB Validation values and Average
+CNB accuracy:   0.4494163424124514
+CNB accuracy:   0.4494163424124514
+CNB accuracy:   0.4494163424124514
+CNB accuracy:   0.4494163424124514
+CNB accuracy:   0.4494163424124514
+Total Average: 0.4494163424124514
+
+
+MLP_NN Validation values and Average
+MLP_NN accuracy:   0.622568093385214
+MLP_NN accuracy:   0.6186770428015564
+MLP_NN accuracy:   0.6264591439688716
+MLP_NN accuracy:   0.632295719844358
+MLP_NN accuracy:   0.6478599221789884
+Total Average: 0.6295719844357976
+
+
+Dataset 2
+
+DT Validation values and Average
+DT accuracy:   0.768
+DT accuracy:   0.7705
+DT accuracy:   0.7625
+DT accuracy:   0.767
+DT accuracy:   0.77
+Total Average: 0.7676000000000001
+
+
+MNB Validation values and Average
+MNB accuracy:   0.786
+MNB accuracy:   0.786
+MNB accuracy:   0.786
+MNB accuracy:   0.786
+MNB accuracy:   0.786
+Total Average: 0.786
+
+
+BNB Validation values and Average
+BNB accuracy:   0.8005
+BNB accuracy:   0.8005
+BNB accuracy:   0.8005
+BNB accuracy:   0.8005
+BNB accuracy:   0.8005
+Total Average: 0.8004999999999999
+
+
+GNB Validation values and Average
+GNB accuracy:   0.642
+GNB accuracy:   0.642
+GNB accuracy:   0.642
+GNB accuracy:   0.642
+GNB accuracy:   0.642
+Total Average: 0.642
+
+
+CNB Validation values and Average
+CNB accuracy:   0.6225
+CNB accuracy:   0.6225
+CNB accuracy:   0.6225
+CNB accuracy:   0.6225
+CNB accuracy:   0.6225
+Total Average: 0.6225
+
+
+MLP_NN Validation values and Average
+MLP_NN accuracy:   0.8765
+MLP_NN accuracy:   0.889
+MLP_NN accuracy:   0.8715
+MLP_NN accuracy:   0.877
+MLP_NN accuracy:   0.8705
+Total Average: 0.8769

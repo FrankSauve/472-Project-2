@@ -42,3 +42,4 @@ def classify(features, labels, ds, type):
         exit(0)
 
     print(type+" accuracy: ", LogColors.OKBLUE, accuracy, LogColors.ENDC)
+    return accuracy
