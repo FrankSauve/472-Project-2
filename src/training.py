@@ -2,7 +2,13 @@ import os
 import pickle
 from sklearn import tree
 from sklearn.naive_bayes import MultinomialNB, BernoulliNB, GaussianNB, ComplementNB
+from sklearn.neural_network import MLPClassifier
+from sklearn.exceptions import ConvergenceWarning
+import warnings
 
+# with warnings.catch_warnings():  TODO: Figure out why this shit doesn't work
+    #     warnings.simplefilter("ignore")
+    #     warnings.filterwarnings(action='ignore', category=ConvergenceWarning)
 
 def save_classifier(classifier, filename):
     """
@@ -69,3 +75,16 @@ def CNB_train(features, labels):
     CNB_Classifier = ComplementNB()
     CNB_Classifier.fit(features, labels)
     save_classifier(CNB_Classifier, "CNB_Classifier.pkl")
+
+def MLP_NN_train(features, labels):
+    """
+    Use the Multi-layer Perceptron Neural Network classifier to train
+    and saves the classifier as pickle file
+    :param features: List of features from training set
+    :param labels: List of labels from training set
+    """
+
+    MLP_NN_Classifier = MLPClassifier()
+    MLP_NN_Classifier.fit(features, labels)
+    save_classifier(MLP_NN_Classifier, "MLP_NN_Classifier.pkl")
+
