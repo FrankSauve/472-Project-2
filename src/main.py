@@ -145,9 +145,8 @@ else:
 
             average = 0
             j = 0
-            while j < 5:
-
-                current = 0
+            maxRuns = 5
+            while j < maxRuns:
 
                 ds_training_features, ds_training_labels = get_dataset(
                     "ds" + str(dataset) + "/ds" + str(dataset) + "Train.csv")
@@ -156,22 +155,28 @@ else:
                     training.DT_train(ds_training_features, ds_training_labels)
                 elif i == 2:
                     training.MNB_train(ds_training_features, ds_training_labels)
+                    j = maxRuns
                 elif i == 3:
                     training.BNB_train(ds_training_features, ds_training_labels)
+                    j = maxRuns
                 elif i == 4:
                     training.GNB_train(ds_training_features, ds_training_labels)
+                    j = maxRuns
                 elif i == 5:
                     training.CNB_train(ds_training_features, ds_training_labels)
+                    j = maxRuns
                 elif i == 6:
                     training.MLP_NN_train(ds_training_features, ds_training_labels)
 
                 ds_validation_features, ds_validation_labels = get_dataset(
                     "ds" + str(dataset) + "/ds" + str(dataset) + "Val.csv")
 
-                current = validation.classify(ds_validation_features, ds_validation_labels, str(dataset), k)
-                average += current
+                average += validation.classify(ds_validation_features, ds_validation_labels, str(dataset), k)
                 j += 1
-            average /= 5
-            print("Total Average: " + str(average) + "\n\n")
+            if (i == 1) or (i == 6):
+                average /= maxRuns
+                print("Total Average: " + str(average) + "\n\n")
+            else:
+                print("\n")
             i += 1
         dataset += 1
