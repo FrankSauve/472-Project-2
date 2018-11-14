@@ -3,12 +3,12 @@ import pickle
 from sklearn import tree
 from sklearn.naive_bayes import MultinomialNB, BernoulliNB, GaussianNB, ComplementNB
 from sklearn.neural_network import MLPClassifier
-from sklearn.exceptions import ConvergenceWarning
 import warnings
 
-with warnings.catch_warnings():  #TODO: Figure out why this shit doesn't work
-         warnings.simplefilter("ignore")
-         warnings.filterwarnings(action='ignore', category=ConvergenceWarning)
+
+def warn(*args, **kwargs):
+    pass
+warnings.warn = warn
 
 def save_classifier(classifier, filename):
     """
@@ -27,7 +27,7 @@ def DT_train(features, labels):
     :param features: List of features from training set
     :param labels: List of labels from training set
     """
-    DT_Classifier = tree.DecisionTreeClassifier(splitter='random')
+    DT_Classifier = tree.DecisionTreeClassifier(criterion='entropy')
     DT_Classifier.fit(features, labels)
     save_classifier(DT_Classifier, "DT_Classifier.pkl")
 
@@ -39,7 +39,7 @@ def MNB_train(features, labels):
     :param features: List of features from training set
     :param labels: List of labels from training set
     """
-    MNB_Classifier = MultinomialNB()
+    MNB_Classifier = MultinomialNB(alpha=10.0)
     MNB_Classifier.fit(features, labels)
     save_classifier(MNB_Classifier, "MNB_Classifier.pkl")
 
@@ -50,7 +50,7 @@ def BNB_train(features, labels):
     :param features: List of features from training set
     :param labels: List of labels from training set
     """
-    BNB_Classifier = BernoulliNB()
+    BNB_Classifier = BernoulliNB(alpha=0.5)
     BNB_Classifier.fit(features, labels)
     save_classifier(BNB_Classifier, "BNB_Classifier.pkl")
 
@@ -61,7 +61,7 @@ def GNB_train(features, labels):
     :param features: List of features from training set
     :param labels: List of labels from training set
     """
-    GNB_Classifier = GaussianNB()
+    GNB_Classifier = GaussianNB(var_smoothing=1e-01)
     GNB_Classifier.fit(features, labels)
     save_classifier(GNB_Classifier, "GNB_Classifier.pkl")
 
@@ -72,7 +72,7 @@ def CNB_train(features, labels):
     :param features: List of features from training set
     :param labels: List of labels from training set
     """
-    CNB_Classifier = ComplementNB()
+    CNB_Classifier = ComplementNB(alpha=10.0)
     CNB_Classifier.fit(features, labels)
     save_classifier(CNB_Classifier, "CNB_Classifier.pkl")
 

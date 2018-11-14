@@ -140,7 +140,8 @@ if test == "2":
     dataset = 1
     while dataset <= 2:
 
-        print(LogColors.OKBLUE + "Dataset " + str(dataset) + "\n" + LogColors.ENDC)
+        print(LogColors.OKBLUE + "Dataset " + str(dataset) + ("\n" if (int(option1) == 1 or int(option1) == 6)
+              else "") + LogColors.ENDC)
 
         average = 0
         k = ""
@@ -158,7 +159,8 @@ if test == "2":
         elif int(option1) == 6:
             k = "MLP_NN"
 
-        print(LogColors.BOLD + k + " Validation values and Average" + LogColors.ENDC)
+        print(LogColors.BOLD + k + " Validation values" + (" and Average" if (int(option1) == 1 or int(option1) == 6)
+              else "") + LogColors.ENDC)
 
         j = 0
         maxRuns = 5
@@ -223,7 +225,9 @@ else:
             elif i == 6:
                 k = "MLP_NN"
 
-            print(LogColors.BOLD + k + " Validation values and Average" + LogColors.ENDC)
+            print(
+                LogColors.BOLD + k + " Validation values" + (" and Average" if (i == 1 or i == 6)
+                                                             else "") + LogColors.ENDC)
 
             average = 0
             j = 0
