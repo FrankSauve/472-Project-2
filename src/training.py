@@ -6,9 +6,9 @@ from sklearn.neural_network import MLPClassifier
 from sklearn.exceptions import ConvergenceWarning
 import warnings
 
-# with warnings.catch_warnings():  TODO: Figure out why this shit doesn't work
-    #     warnings.simplefilter("ignore")
-    #     warnings.filterwarnings(action='ignore', category=ConvergenceWarning)
+with warnings.catch_warnings():  #TODO: Figure out why this shit doesn't work
+         warnings.simplefilter("ignore")
+         warnings.filterwarnings(action='ignore', category=ConvergenceWarning)
 
 def save_classifier(classifier, filename):
     """

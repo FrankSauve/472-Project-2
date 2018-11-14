@@ -12,12 +12,13 @@ def exitOnZero(check):
 test = ""
 validOption = False
 while not validOption:
-    test = input(LogColors.HEADER + "Individual or full test?\n" + LogColors.ENDC +
-                    "1. Individual\n"
-                    "2. Full\n"
+    test = input(LogColors.HEADER + "How do you wish to test the learning algorithms?\n" + LogColors.ENDC +
+                    "1. Custom Test\n"
+                    "2. Partial Test\n"
+                    "3. Full Test\n"
                     + LogColors.FAIL + "0. Exit\n" + LogColors.ENDC)
 
-    if (int(test) >= 0) and (int(test) <= 2):
+    if (int(test) >= 0) and (int(test) <= 3):
         validOption = True
 
 exitOnZero(int(test))
@@ -114,7 +115,88 @@ if test == "1":
                 validation.classify(ds_validation_features, ds_validation_labels, option1, "MLP_NN")
 
             print(LogColors.OKGREEN + "Validated Successfully ✔" + LogColors.ENDC)
-# Run training program
+# Run partial testing program
+if test == "2":
+
+    # Choose which ML alg to use
+    option1 = ""
+    validOption = False
+    while not validOption:
+        option1 = input(LogColors.HEADER + "Which algorithm do you wish to test?\n" + LogColors.ENDC +
+                        "1. DT\n"
+                        "2. MNB\n"
+                        "3. BNB\n"
+                        "4. GNB\n"
+                        "5. CNB\n"
+                        "6. MLP NN\n"
+                        + LogColors.FAIL + "0. Exit\n" + LogColors.ENDC)
+        if (int(option1) >= 0) and (int(option1) <= 6):
+            validOption = True
+
+    exitOnZero(int(option1))
+
+    print(LogColors.OKGREEN + "Running Partial testing Program...\n" + LogColors.ENDC)
+
+    dataset = 1
+    while dataset <= 2:
+
+        print(LogColors.OKBLUE + "Dataset " + str(dataset) + "\n" + LogColors.ENDC)
+
+        average = 0
+        k = ""
+
+        if int(option1) == 1:
+            k = "DT"
+        elif int(option1) == 2:
+            k = "MNB"
+        elif int(option1) == 3:
+            k = "BNB"
+        elif int(option1) == 4:
+            k = "GNB"
+        elif int(option1) == 5:
+            k = "CNB"
+        elif int(option1) == 6:
+            k = "MLP_NN"
+
+        print(LogColors.BOLD + k + " Validation values and Average" + LogColors.ENDC)
+
+        j = 0
+        maxRuns = 5
+        while j < maxRuns:
+
+            ds_training_features, ds_training_labels = get_dataset(
+                "ds" + str(dataset) + "/ds" + str(dataset) + "Train.csv")
+
+            if int(option1) == 1:
+                training.DT_train(ds_training_features, ds_training_labels)
+            elif int(option1) == 2:
+                training.MNB_train(ds_training_features, ds_training_labels)
+                j = maxRuns
+            elif int(option1) == 3:
+                training.BNB_train(ds_training_features, ds_training_labels)
+                j = maxRuns
+            elif int(option1) == 4:
+                training.GNB_train(ds_training_features, ds_training_labels)
+                j = maxRuns
+            elif int(option1) == 5:
+                training.CNB_train(ds_training_features, ds_training_labels)
+                j = maxRuns
+            elif int(option1) == 6:
+                training.MLP_NN_train(ds_training_features, ds_training_labels)
+
+            ds_validation_features, ds_validation_labels = get_dataset(
+                "ds" + str(dataset) + "/ds" + str(dataset) + "Val.csv")
+
+            average += validation.classify(ds_validation_features, ds_validation_labels, str(dataset), k)
+            j += 1
+        if (int(option1) == 1) or (int(option1) == 6):
+            average /= maxRuns
+            print("Total Average: " + str(average) + "\n\n")
+        else:
+            print("\n")
+        dataset += 1
+
+# Run Full testing program
 else:
     print(LogColors.OKGREEN + "Running Testing Program...\n" + LogColors.ENDC)
 
