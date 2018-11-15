@@ -84,7 +84,7 @@ def MLP_NN_train(features, labels):
     :param labels: List of labels from training set
     """
 
-    MLP_NN_Classifier = MLPClassifier()
+    MLP_NN_Classifier = MLPClassifier(batch_size=500)
     MLP_NN_Classifier.fit(features, labels)
     save_classifier(MLP_NN_Classifier, "MLP_NN_Classifier.pkl")
 
