@@ -1,18 +1,19 @@
 import os
-import pickle
 from LogColors import LogColors
 from sklearn.metrics import accuracy_score
-from processing import get_dataset
+from sklearn.externals import joblib
 
-def load_classifier(filename):
+
+def load_classifier(filename, ds):
     """
     Load a pickle file
     :param filename: Name of the pick file
     :return: The classifier saved in the pickle file
     """
-    with open(os.path.abspath(os.path.join(os.getcwd(), "../pickles/", filename)), "rb") as pickle_file:
-        classifier = pickle.load(pickle_file)
+    with open(os.path.abspath(os.path.join(os.getcwd(), "../joblibs/ds" + ds + filename)), "rb") as joblib_file:
+        classifier = joblib.load(joblib_file)
     return classifier
+
 
 def classify(features, labels, ds, type):
     """
@@ -21,7 +22,7 @@ def classify(features, labels, ds, type):
     :param labels: List of labels from validation set
     :return:
     """
-    classifier = load_classifier(type+"_Classifier.pkl")
+    classifier = load_classifier(type+"_Classifier.pkl", ds)
 
     ds_validation_predicted = classifier.predict(features)
 

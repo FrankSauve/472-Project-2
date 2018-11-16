@@ -4,7 +4,7 @@ from LogColors import LogColors
 from processing import get_dataset
 
 
-def exitOnZero(check):
+def exit_on_zero(check):
     if check == 0:
         exit(check)
 
@@ -21,7 +21,7 @@ while not validOption:
     if (int(test) >= 0) and (int(test) <= 3):
         validOption = True
 
-exitOnZero(int(test))
+exit_on_zero(int(test))
 
 if test == "1":
     while True:
@@ -37,7 +37,7 @@ if test == "1":
             if (int(option1) >= 0) and (int(option1) <= 2):
                 validOption = True
 
-        exitOnZero(int(option1))
+        exit_on_zero(int(option1))
 
         # Choose which ML alg to use
         option2 = ""
@@ -54,7 +54,7 @@ if test == "1":
             if (int(option2) >= 0) and (int(option2) <= 6):
                 validOption = True
 
-        exitOnZero(int(option2))
+        exit_on_zero(int(option2))
 
         # Choose which NB alg to use if nb was chosen
         if (option2 == "3") or (option2 == "4"):
@@ -71,7 +71,7 @@ if test == "1":
                 if (int(option3) >= 0) and (int(option3) <= 3):
                     validOption = True
 
-            exitOnZero(int(option3))
+            exit_on_zero(int(option3))
 
         # Training
         if int(option2) % 2 == 1:
@@ -80,18 +80,18 @@ if test == "1":
             ds_training_features, ds_training_labels = get_dataset("ds" + option1 + "/ds" + option1 + "Train.csv")
 
             if option2 == "1":
-                training.DT_train(ds_training_features, ds_training_labels)
+                training.DT_train(ds_training_features, ds_training_labels, option1)
             elif option2 == "3":
                 if option3 == "1":
-                    training.MNB_train(ds_training_features, ds_training_labels)
+                    training.MNB_train(ds_training_features, ds_training_labels, option1)
                 elif option3 == "2":
-                    training.BNB_train(ds_training_features, ds_training_labels)
+                    training.BNB_train(ds_training_features, ds_training_labels, option1)
                 elif option3 == "3":
-                    training.GNB_train(ds_training_features, ds_training_labels)
+                    training.GNB_train(ds_training_features, ds_training_labels, option1)
                 elif option3 == "4":
-                    training.CNB_train(ds_training_features, ds_training_labels)
+                    training.CNB_train(ds_training_features, ds_training_labels, option1)
             elif option2 == "5":
-                training.MLP_NN_train(ds_training_features, ds_training_labels)
+                training.MLP_NN_train(ds_training_features, ds_training_labels, option1)
 
             print(LogColors.OKGREEN + "Trained Successfully ✔" + LogColors.ENDC)
         # Validating
@@ -133,7 +133,7 @@ if test == "2":
         if (int(option1) >= 0) and (int(option1) <= 6):
             validOption = True
 
-    exitOnZero(int(option1))
+    exit_on_zero(int(option1))
 
     print(LogColors.OKGREEN + "Running Partial testing Program...\n" + LogColors.ENDC)
 
@@ -170,21 +170,21 @@ if test == "2":
                 "ds" + str(dataset) + "/ds" + str(dataset) + "Train.csv")
 
             if int(option1) == 1:
-                training.DT_train(ds_training_features, ds_training_labels)
+                training.DT_train(ds_training_features, ds_training_labels, str(dataset))
             elif int(option1) == 2:
-                training.MNB_train(ds_training_features, ds_training_labels)
+                training.MNB_train(ds_training_features, ds_training_labels, str(dataset))
                 j = maxRuns
             elif int(option1) == 3:
-                training.BNB_train(ds_training_features, ds_training_labels)
+                training.BNB_train(ds_training_features, ds_training_labels, str(dataset))
                 j = maxRuns
             elif int(option1) == 4:
-                training.GNB_train(ds_training_features, ds_training_labels)
+                training.GNB_train(ds_training_features, ds_training_labels, str(dataset))
                 j = maxRuns
             elif int(option1) == 5:
-                training.CNB_train(ds_training_features, ds_training_labels)
+                training.CNB_train(ds_training_features, ds_training_labels, str(dataset))
                 j = maxRuns
             elif int(option1) == 6:
-                training.MLP_NN_train(ds_training_features, ds_training_labels)
+                training.MLP_NN_train(ds_training_features, ds_training_labels, str(dataset))
 
             ds_validation_features, ds_validation_labels = get_dataset(
                 "ds" + str(dataset) + "/ds" + str(dataset) + "Val.csv")
@@ -238,21 +238,21 @@ else:
                     "ds" + str(dataset) + "/ds" + str(dataset) + "Train.csv")
 
                 if i == 1:
-                    training.DT_train(ds_training_features, ds_training_labels)
+                    training.DT_train(ds_training_features, ds_training_labels, str(dataset))
                 elif i == 2:
-                    training.MNB_train(ds_training_features, ds_training_labels)
+                    training.MNB_train(ds_training_features, ds_training_labels, str(dataset))
                     j = maxRuns
                 elif i == 3:
-                    training.BNB_train(ds_training_features, ds_training_labels)
+                    training.BNB_train(ds_training_features, ds_training_labels, str(dataset))
                     j = maxRuns
                 elif i == 4:
-                    training.GNB_train(ds_training_features, ds_training_labels)
+                    training.GNB_train(ds_training_features, ds_training_labels, str(dataset))
                     j = maxRuns
                 elif i == 5:
-                    training.CNB_train(ds_training_features, ds_training_labels)
+                    training.CNB_train(ds_training_features, ds_training_labels, str(dataset))
                     j = maxRuns
                 elif i == 6:
-                    training.MLP_NN_train(ds_training_features, ds_training_labels)
+                    training.MLP_NN_train(ds_training_features, ds_training_labels, str(dataset))
 
                 ds_validation_features, ds_validation_labels = get_dataset(
                     "ds" + str(dataset) + "/ds" + str(dataset) + "Val.csv")
