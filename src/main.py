@@ -1,7 +1,8 @@
 import training
 import validation
+import testing
 from LogColors import LogColors
-from processing import get_dataset
+from processing import get_dataset, get_test_dataset
 
 
 def exit_on_zero(check):
@@ -13,12 +14,13 @@ test = ""
 validOption = False
 while not validOption:
     test = input(LogColors.HEADER + "How do you wish to test the learning algorithms?\n" + LogColors.ENDC +
-                    "1. Custom Test\n"
-                    "2. Partial Test\n"
-                    "3. Full Test\n"
-                    + LogColors.FAIL + "0. Exit\n" + LogColors.ENDC)
+                                    "1. Custom\n"
+                                    "2. Train + Validate One\n"
+                                    "3. Train + Validate All\n"
+                                    "4. Test All\n"
+                                    + LogColors.FAIL + "0. Exit\n" + LogColors.ENDC)
 
-    if (int(test) >= 0) and (int(test) <= 3):
+    if (int(test) >= 0) and (int(test) <= 4):
         validOption = True
 
 exit_on_zero(int(test))
@@ -199,7 +201,7 @@ if test == "2":
         dataset += 1
 
 # Run Full testing program
-else:
+if test == "3":
     print(LogColors.OKGREEN + "Running Testing Program...\n" + LogColors.ENDC)
 
     dataset = 1
@@ -266,3 +268,24 @@ else:
                 print("\n")
             i += 1
         dataset += 1
+
+if test == "4":
+    print(LogColors.OKGREEN + "Testing Dataset 1..." + LogColors.ENDC)
+    ds1_test_features = get_test_dataset("ds1/ds1Test.csv")
+    testing.classify(ds1_test_features, "1", "DT")
+    testing.classify(ds1_test_features, "1", "MNB")
+    testing.classify(ds1_test_features, "1", "BNB")
+    testing.classify(ds1_test_features, "1", "GNB")
+    testing.classify(ds1_test_features, "1", "CNB")
+    testing.classify(ds1_test_features, "1", "MLP_NN")
+
+    print(LogColors.OKGREEN + "Testing Dataset 2..." + LogColors.ENDC)
+    ds1_test_features = get_test_dataset("ds2/ds2Test.csv")
+    testing.classify(ds1_test_features, "2", "DT")
+    testing.classify(ds1_test_features, "2", "MNB")
+    testing.classify(ds1_test_features, "2", "BNB")
+    testing.classify(ds1_test_features, "2", "GNB")
+    testing.classify(ds1_test_features, "2", "CNB")
+    testing.classify(ds1_test_features, "2", "MLP_NN")
+
+    print(LogColors.OKGREEN + "Tested Successfully ✔" + LogColors.ENDC)

@@ -29,6 +29,7 @@ def DT_train(features, labels, ds):
     and saves the classifier as pickle file
     :param features: List of features from training set
     :param labels: List of labels from training set
+    :param ds: Number of the dataset
     """
     DT_Classifier = tree.DecisionTreeClassifier(criterion='entropy')
     DT_Classifier.fit(features, labels)
@@ -41,6 +42,7 @@ def MNB_train(features, labels, ds):
     and saves the classifier as pickle file
     :param features: List of features from training set
     :param labels: List of labels from training set
+    :param ds: Number of the dataset
     """
     MNB_Classifier = MultinomialNB(alpha=10.0)
     MNB_Classifier.fit(features, labels)
@@ -53,6 +55,7 @@ def BNB_train(features, labels, ds):
     and saves the classifier as pickle file
     :param features: List of features from training set
     :param labels: List of labels from training set
+    :param ds: Number of the dataset
     """
     BNB_Classifier = BernoulliNB(alpha=0.5)
     BNB_Classifier.fit(features, labels)
@@ -65,6 +68,7 @@ def GNB_train(features, labels, ds):
     and saves the classifier as pickle file
     :param features: List of features from training set
     :param labels: List of labels from training set
+    :param ds: Number of the dataset
     """
     GNB_Classifier = GaussianNB(var_smoothing=1e-01)
     GNB_Classifier.fit(features, labels)
@@ -77,6 +81,7 @@ def CNB_train(features, labels, ds):
     and saves the classifier as pickle file
     :param features: List of features from training set
     :param labels: List of labels from training set
+    :param ds: Number of the dataset
     """
     CNB_Classifier = ComplementNB(alpha=10.0)
     CNB_Classifier.fit(features, labels)
@@ -89,6 +94,7 @@ def MLP_NN_train(features, labels, ds):
     and saves the classifier as pickle file
     :param features: List of features from training set
     :param labels: List of labels from training set
+    :param ds: Number of the dataset
     """
 
     MLP_NN_Classifier = MLPClassifier(batch_size=500)

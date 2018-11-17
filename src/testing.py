@@ -16,28 +16,25 @@ def load_classifier(filename, ds):
     return classifier
 
 
-def classify(features, labels, ds, type):
+def classify(features, ds, type):
     """
     Classify using the trained classifier
     :param features: List of features from validation set
     :param labels: List of labels from validation set
     :param ds: Number of the dataset
     :param type: Name of the classifier
-    :return: accuracy
     """
     classifier = load_classifier(type+"_Classifier.pkl", ds)
 
-    ds_validation_predicted = classifier.predict(features)
-
-    accuracy = accuracy_score(labels, ds_validation_predicted)
+    ds_test_predicted = classifier.predict(features)
 
     try:
-        output = open(os.path.dirname(__file__) + "/../output/ds" + ds + "Val-" + type + ".txt", "w+")
+        output = open(os.path.dirname(__file__) + "/../output/ds" + ds + "Test-" + type + ".txt", "w+")
 
         i = 0
         output_text = ""
-        while i < len(ds_validation_predicted):
-            output_text += str(i + 1) + ", " + str(ds_validation_predicted[i]) + "\n"
+        while i < len(ds_test_predicted):
+            output_text += str(i + 1) + ", " + str(ds_test_predicted[i]) + "\n"
             i += 1
 
         output.write(output_text)
@@ -45,5 +42,3 @@ def classify(features, labels, ds, type):
         print(LogColors.FAIL + "🛑 File IO exception" + LogColors.ENDC)
         exit(0)
 
-    print(type+" accuracy: ", LogColors.OKBLUE, accuracy, LogColors.ENDC)
-    return accuracy
